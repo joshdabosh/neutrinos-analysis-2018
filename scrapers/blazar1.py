@@ -27,7 +27,7 @@ if page:
         tw.append(inf)
 
     f = open("../data/blazar1.json", "w")
-    f.write(json.dumps(tw))
+    f.write(json.dumps(tw, sort_keys=True, indent=4, separators=(",", ": ")))
     f.close()
 
     print("finished")
