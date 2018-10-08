@@ -1,11 +1,8 @@
 from bs4 import BeautifulSoup as bs
 import requests
 import json
-import os
 
 page = requests.get("http://www.physics.purdue.edu/astro/MOJAVE/blazarlist.html")
-
-print("page retrieved")
 
 if page:
     soup = bs(page.content, "html.parser")
@@ -29,4 +26,8 @@ if page:
 
         tw.append(inf)
 
-    print(tw)
+    f = open("../data/blazar1.json", "w")
+    f.write(json.dumps(tw))
+    f.close()
+
+    print("finished")
