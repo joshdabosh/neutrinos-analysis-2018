@@ -20,7 +20,7 @@ tbody = table.find("tbody")
 for tr in tbody.findAll("tr", {"id":lambda x: x == "second_line" or x == "first_line"}):
     lines.append([i.text.strip() for i in tr.findAll("td")][3:8])
 
-f = open("../data2.json", "w")
+f = open("../data/blazar2.json", "w")
 final = [{"ra": ra, "de": de, "a": a, "z": z} for ra, de, a, z in lines]
 f.write(json.dumps(final, sort_keys=True, indent=4, separators=(",", ": ")))
 f.close()
