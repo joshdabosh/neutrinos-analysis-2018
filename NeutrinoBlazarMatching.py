@@ -1,16 +1,12 @@
 from math import pi
 import json
 
-"""
 blazar1 = open("blazar1.json").read()
 blazar1 = json.loads(blazar1)
-"""
 
 try:
     NtrRA = float(input('Enter the Right Ascension of the neutrino event: '))
     NtrDE = float(input('Enter the Declination of the neutrino event: '))
-
-    blazar1 = [{"ra":56.24730, "de" : -85.456, "a": 'bobitybog', "z" : 0.789},{"ra": 186.24730, "de" : 83.456, "a": 'bobiasdfog', "z" : 2.21}]
 
     listBlzInfo = []
     for blazar in blazar1:
@@ -36,6 +32,3 @@ try:
 
 except Exception as e:
     print(e)
-
-           
-
