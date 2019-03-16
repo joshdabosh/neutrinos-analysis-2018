@@ -21,7 +21,8 @@ for tr in tbody.findAll("tr", {"id":lambda x: x == "second_line" or x == "first_
     lines.append([i.text.strip() for i in tr.findAll("td")][3:8])
 
 f = open("../data/blazar2.json", "w")
-final = [{"ra": ra, "de": de, "a": a, "z": z} for ra, de, a, z in lines]
+
+final = [{"ra": ra, "de": de, "a": a, "z": z, "zmag": zmag} for ra, de, a, z, zmag in lines]
 f.write(json.dumps(final, sort_keys=True, indent=4, separators=(",", ": ")))
 f.close()
 
