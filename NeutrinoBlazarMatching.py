@@ -1,10 +1,8 @@
 from math import *
 import json
 
-"""
-blazar1 = open("blazar1.json").read()
+blazar1 = open("data/blazar2.json").read()
 blazar1 = json.loads(blazar1)
-"""
 
 def RatoLon(x):
     h,m,s = x.split()
@@ -13,7 +11,7 @@ def RatoLon(x):
 NtrRA = float(input('Enter the Right Ascension of the neutrino event: '))
 NtrDE = float(input('Enter the Declination of the neutrino event: '))
 
-blazar1 = [{"ra":"2 34 45", "de" : -85.456, "a": 'bobitybog', "z" : 0.789},{"ra": "2 45 45", "de" : 83.456, "a": 'bobiasdfog', "z" : 2.21}]
+#blazar1 = [{"ra":"2 34 45", "de" : -85.456, "a": 'bobitybog', "z" : 0.789},{"ra": "2 45 45", "de" : 83.456, "a": 'bobiasdfog', "z" : 2.21}]
 #z = velocity/c, velocity = hubbleconstant(roughly 70)*distance
 
 listBlzInfo = []
