@@ -175,11 +175,12 @@ def main(n_ra, n_de):
     intersects = []
 
     for a, b in zip(a_closest, v_closest):
-        temp = a
-        temp["n_b_dist"] = b["n_b_dist"]
-        temp["e_b_dist"] = b["e_b_dist"]
+        if a["blazar"]["a"] == b["blazar"]["a"]:           
+            temp = a
+            temp["n_b_dist"] = b["n_b_dist"]
+            temp["e_b_dist"] = b["e_b_dist"]
 
-        intersects.append(temp)
+            intersects.append(temp)
 
     #intersects = [a["relative_dist"] b["relative_dist"] for a, b in zip(a_closest, v_closest) if a["blazar"]["a"] == b["blazar"]["a"]]
 
@@ -191,16 +192,18 @@ def main(n_ra, n_de):
     print(*intersects, sep = "\n\n")
     
     print()
-
-    print("Closest according to angular comparisons: ", end="")
-
-    print(a_closest[:2])
-
     print()
 
-    print("Closest according to vector5 comparisons: ", end="")
+    print("Closest according to angular comparisons: ", end="\n")
 
-    print(v_closest[:2])
+    print(*a_closest[:5], sep="\n\n")
+
+    print()
+    print()
+
+    print("Closest according to vector5 comparisons: ", end="\n")
+
+    print(*v_closest[:5], sep="\n\n")
 
 
 
