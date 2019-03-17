@@ -42,9 +42,9 @@ def getVectorDist(b, n):
     ret_dist = calcMagnitude(*vect_diff)
     return ret_dist
 
-def main():
-    NtrRA = input('Enter the Right Ascension of the neutrino event (HH MM SS): ')
-    NtrDE = float(input('Enter the Declination of the neutrino event (degrees): '))
+def main(NtrRA, NtrDE):
+    #NtrRA = input('Enter the Right Ascension of the neutrino event (HH MM SS): ')
+    #NtrDE = float(input('Enter the Declination of the neutrino event (degrees): '))
 
     #blazar1 = [{"ra":"2 34 45", "de" : -85.456, "a": 'bobitybog', "z" : 0.789},{"ra": "2 45 45", "de" : 83.456, "a": 'bobiasdfog', "z" : 2.21}]
     #z = velocity/c, velocity = hubbleconstant(roughly 70)*distance
@@ -58,8 +58,6 @@ def main():
     n_beta = float(NtrRA)
 
     n_vector = getCoords(n_alpha, n_beta, 1)
-    print(n_vector)
-    print("ready")
 
     listBlzInfo = []
     for blazar in blazar1:
@@ -88,6 +86,8 @@ def main():
         listBlzInfo.append({"dist" : n_b_distance, "blazar":blazar, "b_vec": b_vector})
 
     possibles = sorted(listBlzInfo, key=lambda x: x["dist"])
-    print(*possibles[:10], sep = "\n\n")
+    #print(*possibles[:10], sep = "\n\n")
 
-main()
+    return possibles[:5]
+
+#main()
