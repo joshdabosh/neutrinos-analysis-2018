@@ -169,6 +169,10 @@ def vectors_comparison(NtrRA, NtrDE):
     return possibles[:10]
 
 def main(n_ra, n_de):
+
+    blazarTemplate = """
+{name: < 20}{ra: < 15}{de: < 15}{dist: <30}
+    """.strip()
     a_closest = angular_comparison(n_ra, n_de)
     v_closest = vectors_comparison(n_ra, n_de)
 
@@ -189,7 +193,8 @@ def main(n_ra, n_de):
 
     print("Closest according to both lists (intersection of both):")
 
-    print(*intersects, sep = "\n\n")
+    for b in intersects:
+        
     
     print()
     print()
@@ -204,15 +209,6 @@ def main(n_ra, n_de):
     print("Closest according to vector5 comparisons: ", end="\n")
 
     print(*v_closest[:5], sep="\n\n")
-
-
-
-
-
-
-
-
-
 
 
 
