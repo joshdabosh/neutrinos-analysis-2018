@@ -9,10 +9,10 @@ def RatoLon(x):
     h,m,s = x.split()
     return 15*(int(h.lstrip('0'))+ int(m.lstrip('0'))/60 + int(s.lstrip('0'))/3600)
 
-def getCoords(alpha, beta, r):
-    alpha, beta = alpha*pi/180, beta*pi/180
-    x = r * sin(alpha) * cos(beta)
-    y = r * sin(beta) * sin(alpha)
+def getCoords(alpha, theta, r):
+    alpha, theta = alpha*pi/180, theta*pi/180
+    x = r * sin(alpha) * cos(theta)
+    y = r * sin(theta) * sin(alpha)
     z = r * cos(alpha)
 
     return x, y, z
@@ -37,11 +37,11 @@ def angular_comparison(NtrRA, NtrDE):
     else:
         n_alpha = 90 - abs(float(NtrDE))
 
-    n_beta = float(NtrRA)
+    n_theta = float(NtrRA)
 
     listBlzInfo = []
     for blazar in blazar1:
-        b_beta = float(blazar["ra"])
+        b_theta = float(blazar["ra"])
         b_alpha = float(blazar["de"])
                     
         b_name = blazar["a"]
@@ -52,7 +52,7 @@ def angular_comparison(NtrRA, NtrDE):
         else:
             b_alpha = 90 - abs(b_alpha)
 
-        difRA = n_beta - b_beta
+        difRA = n_theta - b_theta
         difDE = n_alpha - b_alpha
 
         n_b_distance = sqrt(difRA ** 2 + difDE ** 2)
@@ -63,8 +63,6 @@ def angular_comparison(NtrRA, NtrDE):
     #print(*possibles[:10], sep = "\n\n")
 
     return possibles[:10]
-
-    
 
 def vectors_comparison(NtrRA, NtrDE):
     #NtrRA = input('Enter the Right Ascension of the neutrino event (HH MM SS): ')
@@ -79,13 +77,13 @@ def vectors_comparison(NtrRA, NtrDE):
     else:
         n_alpha = 90 - abs(float(NtrDE))
 
-    n_beta = float(NtrRA)
+    n_theta = float(NtrRA)
 
-    n_vector = getCoords(n_alpha, n_beta, 1)
+    n_vector = getCoords(n_alpha, n_theta, 1)
 
     listBlzInfo = []
     for blazar in blazar1:
-        b_beta = float(blazar["ra"])
+        b_theta = float(blazar["ra"])
         b_alpha = float(blazar["de"])
 
         b_redshift = blazar['z']
@@ -103,7 +101,7 @@ def vectors_comparison(NtrRA, NtrDE):
         else:
             b_alpha = 90 - abs(b_alpha)
 
-        b_vector = getCoords(b_alpha, b_beta, b_mag)
+        b_vector = getCoords(b_alpha, b_theta, b_mag)
 
         n_b_distance = getVectorDist(b_vector, n_vector)
         

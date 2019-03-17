@@ -18,11 +18,11 @@ table = bottom.find("table", {"class":"table_catalog"})
 tbody = table.find("tbody")
 
 for tr in tbody.findAll("tr", {"id":lambda x: x == "second_line" or x == "first_line"}):
-    lines.append([i.text.strip() for i in tr.findAll("td")][3:8])
+    lines.append([i.text.strip() for i in tr.findAll("td")][3:7])
 
 f = open("../data/blazar2.json", "w")
 
-final = [{"a": a, "ra": ra, "de": de, "z": z, "zmag": zmag} for a, ra, de, z, zmag in lines]
+final = [{"a": a, "ra": ra, "de": de, "z": z} for a, ra, de, z in lines]
 f.write(json.dumps(
     final,
     sort_keys=True,
