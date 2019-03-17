@@ -23,7 +23,14 @@ for tr in tbody.findAll("tr", {"id":lambda x: x == "second_line" or x == "first_
 f = open("../data/blazar2.json", "w")
 
 final = [{"a": a, "ra": ra, "de": de, "z": z, "zmag": zmag} for a, ra, de, z, zmag in lines]
-f.write(json.dumps(final, sort_keys=True, indent=4, separators=(",", ": ")))
+f.write(json.dumps(
+    final,
+    sort_keys=True,
+    indent=4,
+    separators=(",", ": ")
+    )
+)
+
 f.close()
 
 print("finished")
