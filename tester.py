@@ -21,3 +21,9 @@ for b in blazars:
 
         if not found:
             fail += 1
+
+
+print("completed testing")
+print("total successes: {}".format(succ))
+print("total fails: {}".format(fail))
+print("successes to total ratio: {}".format(succ/(succ+fail)))
