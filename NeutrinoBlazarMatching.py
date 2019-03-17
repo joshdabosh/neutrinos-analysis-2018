@@ -4,18 +4,6 @@ import json
 blazar1 = open("data/blazar2.json").read()
 blazar1 = json.loads(blazar1)
 
-"""
-    difRA = n_beta - b_beta
-    difDE = n_alpha - b_alpha
-
-    n_b_distance = (difRA ** 2 + difDE** 2) ** 0.5
-"""
-
-"""
-
-
-"""
-
 def RatoLon(x):
     print(x)
     h,m,s = x.split()
@@ -42,7 +30,43 @@ def getVectorDist(b, n):
     ret_dist = calcMagnitude(*vect_diff)
     return ret_dist
 
-def main(NtrRA, NtrDE):
+def angular_comparison(NtrRA, NtrDE):
+    if NtrDE < 0:
+        n_alpha = abs(float(NtrDE)) + 90
+
+    else:
+        n_alpha = 90 - abs(float(NtrDE))
+
+    n_beta = float(NtrRA)
+
+    listBlzInfo = []
+    for blazar in blazar1:
+        b_beta = float(blazar["ra"])
+        b_alpha = float(blazar["de"])
+                    
+        b_name = blazar["a"]
+
+        if b_alpha < 0:
+            b_alpha = abs(b_alpha) + 90
+
+        else:
+            b_alpha = 90 - abs(b_alpha)
+
+        difRA = n_beta - b_beta
+        difDE = n_alpha - b_alpha
+
+        n_b_distance = sqrt(difRA ** 2 + difDE ** 2)
+        
+        listBlzInfo.append({"angular_dist" : n_b_distance, "blazar":blazar})
+
+    possibles = sorted(listBlzInfo, key=lambda x: x["angular_dist"])
+    #print(*possibles[:10], sep = "\n\n")
+
+    return possibles[:10]
+
+    
+
+def vectors_comparison(NtrRA, NtrDE):
     #NtrRA = input('Enter the Right Ascension of the neutrino event (HH MM SS): ')
     #NtrDE = float(input('Enter the Declination of the neutrino event (degrees): '))
 
@@ -66,7 +90,7 @@ def main(NtrRA, NtrDE):
 
         b_redshift = blazar['z']
 
-        if float(b_redshift) <= 0:
+        if float(b_redshift) <= 0.25:
             continue
                     
         b_name = blazar["a"]
@@ -83,11 +107,50 @@ def main(NtrRA, NtrDE):
 
         n_b_distance = getVectorDist(b_vector, n_vector)
         
-        listBlzInfo.append({"dist" : n_b_distance, "blazar":blazar, "b_vec": b_vector})
+        listBlzInfo.append({"relative_dist" : n_b_distance, "blazar":blazar, "b_vec": b_vector})
 
-    possibles = sorted(listBlzInfo, key=lambda x: x["dist"])
+    possibles = sorted(listBlzInfo, key=lambda x: x["relative_dist"])
     #print(*possibles[:10], sep = "\n\n")
 
-    return possibles[:5]
+    return possibles[:10]
 
-#main()
+def main(n_ra, n_de):
+    a_closest = angular_comparison(n_ra, n_de)
+    v_closest = vectors_comparison(n_ra, n_de)
+
+    intersects = [a.update({"relative_dist":b["relative_dist"]}) for a, b in zip(a_closest, v_closest) if a["blazar"]["a"] == b["blazar"]["a"]]
+
+    print()
+    print()
+
+    print("Closest according to both lists (intersection of both): ", end="")
+
+    print(intersects)
+
+    print()
+
+    print("Closest according to angular comparisons: ", end="")
+
+    print(a_closest[:2])
+
+    print()
+
+    print("Closest according to vector5 comparisons: ", end="")
+
+    print(v_closest[:2])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
