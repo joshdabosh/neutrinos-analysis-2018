@@ -49,7 +49,7 @@ def main():
     #blazar1 = [{"ra":"2 34 45", "de" : -85.456, "a": 'bobitybog', "z" : 0.789},{"ra": "2 45 45", "de" : 83.456, "a": 'bobiasdfog', "z" : 2.21}]
     #z = velocity/c, velocity = hubbleconstant(roughly 70)*distance
 
-    if str(NtrDE)[0] == "-":
+    if NtrDE < 0:
         n_alpha = abs(float(NtrDE)) + 90
 
     else:
@@ -68,9 +68,9 @@ def main():
 
         b_redshift = blazar['z']
 
-        if int(float(b_redshift)) == 0:
+        if float(b_redshift) <= 0:
             continue
-        
+                    
         b_name = blazar["a"]
 
         b_mag = float(b_redshift) * 2997992458 / 70
@@ -88,6 +88,6 @@ def main():
         listBlzInfo.append({"dist" : n_b_distance, "blazar":blazar, "b_vec": b_vector})
 
     possibles = sorted(listBlzInfo, key=lambda x: x["dist"])
-    print(*possibles[:20], sep = "\n\n")
+    print(*possibles[:10], sep = "\n\n")
 
 main()
