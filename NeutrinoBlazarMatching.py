@@ -168,7 +168,9 @@ def vectors_comparison(NtrRA, NtrDE):
 
     return possibles[:10]
 
-def main(n_ra, n_de):
+def main(n_ra, n_de, verbose=True):
+
+    n_ra, n_de = float(n_ra), float(n_de)
 
     blazarTemplateTotal = """
 {name: <20}{ra: <20}{de: <20}{ann_dist: <30}{n_b_dist: <30}{e_b_dist: <30}
@@ -196,6 +198,9 @@ def main(n_ra, n_de):
 
     #intersects = [a["relative_dist"] b["relative_dist"] for a, b in zip(a_closest, v_closest) if a["blazar"]["a"] == b["blazar"]["a"]]
 
+    if not verbose:
+        return a_closest, v_closest, intersects
+    
     print()
     print()
 
