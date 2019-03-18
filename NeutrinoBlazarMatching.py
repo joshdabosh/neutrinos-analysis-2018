@@ -170,8 +170,16 @@ def vectors_comparison(NtrRA, NtrDE):
 
 def main(n_ra, n_de):
 
-    blazarTemplate = """
-{name: < 20}{ra: < 15}{de: < 15}{dist: <30}
+    blazarTemplateTotal = """
+{name: <20}{ra: <20}{de: <20}{ann_dist: <30}{n_b_dist: <30}{e_b_dist: <30}
+    """.strip()
+
+    blazarTemplateAnn = """
+{name: <20}{ra: <20}{de: <20}{ann_dist: <30}
+    """.strip()
+
+    blazarTemplateVec = """
+{name: <20}{ra: <20}{de: <20}{n_b_dist: <30}{e_b_dist: <30}
     """.strip()
     a_closest = angular_comparison(n_ra, n_de)
     v_closest = vectors_comparison(n_ra, n_de)
@@ -193,26 +201,75 @@ def main(n_ra, n_de):
 
     print("Closest according to both lists (intersection of both):")
 
+    print("-"*len("Closest according to both lists (intersection of both):"))
+
+    print()
+    print(blazarTemplateTotal.format(
+        name="Blazar Name",
+        ra="Right Ascension",
+        de="Declination",
+        ann_dist="Angular Distance",
+        n_b_dist="Neutrino-Blazar distance",
+        e_b_dist="Earth-Blazar distance"
+    ))
+
     for b in intersects:
+        print(blazarTemplateTotal.format(
+            name=b["blazar"]["a"],
+            ra=b["blazar"]["ra"],
+            de=b["blazar"]["de"],
+            ann_dist=b["angular_dist"],
+            n_b_dist=b["n_b_dist"],
+            e_b_dist=b["e_b_dist"]
+        ))
         
-    
+    ###
+        
     print()
     print()
 
-    print("Closest according to angular comparisons: ", end="\n")
+    print("Closest according to angular comparisons:")
 
-    print(*a_closest[:5], sep="\n\n")
+    print("-"*len("Closest according to angular comparisons:"))
+
+    print()
+    print(blazarTemplateAnn.format(
+        name="Blazar Name",
+        ra="Right Ascension",
+        de="Declination",
+        ann_dist="Angular Distance"
+    ))
+
+    for b in a_closest:
+        print(blazarTemplateAnn.format(
+            name=b["blazar"]["a"],
+            ra=b["blazar"]["ra"],
+            de=b["blazar"]["de"],
+            ann_dist=b["angular_dist"]
+    ))
 
     print()
     print()
 
-    print("Closest according to vector5 comparisons: ", end="\n")
+    ###
 
-    print(*v_closest[:5], sep="\n\n")
+    print("Closest according to vector comparisons: ", end="\n")
 
+    print("-"*len("Closest according to vector comparisons:"))
 
+    print(blazarTemplateVec.format(
+        name="Blazar Name",
+        ra="Right Ascension",
+        de="Declination",
+        n_b_dist="Neutrino-Blazar distance",
+        e_b_dist="Earth-Blazar distance"
+    ))
 
-
-
-
-
+    for b in v_closest:
+        print(blazarTemplateVec.format(
+            name=b["blazar"]["a"],
+            ra=b["blazar"]["ra"],
+            de=b["blazar"]["de"],
+            n_b_dist=b["n_b_dist"],
+            e_b_dist=b["e_b_dist"]
+    ))
