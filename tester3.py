@@ -1,7 +1,4 @@
 import NeutrinoBlazarMatching as nbm
-import matplotlib.pyplot as plt; plt.rcdefaults()
-import numpy as np
-import matplotlib.pyplot as plt
 import operator
 
 
@@ -92,27 +89,3 @@ print(b_template.format(
 
 for name, count in reversed(sorted(counts_i.items(), key=operator.itemgetter(1))):
     print(b_template.format(name=name, count=count))
-
-
-
-
-print("making graph...")
-objects = counts_a.keys()
-y_pos = np.arange(len(objects))
-y_values = list(counts_a.values())
-
-plt.bar(y_pos, y_values, align="center", alpha=0.5)
-plt.xticks(y_pos, objects)
-plt.ylabel("Counts returned")
-plt.xlabel("Blazar name")
-plt.title("Blazar Name Counts using Angular Comparison")
-
-plt.show()
-
-
-
-
-
-
-
-
