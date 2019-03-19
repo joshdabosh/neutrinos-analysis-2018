@@ -11,7 +11,7 @@ for suffix in events_listing:
     events = [i.split() for i in f][1:]
 
     for ev in events:
-        a, v, i = nbm.main(ev[1], ev[2], verbose=False)
+        a, v, i, top_both = nbm.main(ev[1], ev[2], verbose=False)
 
         # PCCS1217G195.39- is the name for the TXS blazar
 
