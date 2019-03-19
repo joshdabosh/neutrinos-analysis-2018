@@ -133,21 +133,6 @@ def main(n_ra, n_de, verbose=True):
 
     intersects = []
 
-    for a in a_closest:
-        found = False
-        for b in v_closest:
-            if found == True:
-                continue
-            
-            if a["blazar"]["a"] == b["blazar"]["a"]:
-                temp = dict(a)
-                temp["n_b_dist"] = b["n_b_dist"]
-                temp["e_b_dist"] = b["e_b_dist"]
-
-                intersects.append(temp)
-
-                found = True
-
     if a_closest[0]["blazar"]["a"] == v_closest[0]["blazar"]["a"]:
         temp = dict(a_closest[0])
         temp["n_b_dist"] = v_closest[0]["n_b_dist"]
@@ -161,7 +146,7 @@ def main(n_ra, n_de, verbose=True):
     #intersects = [a["relative_dist"] b["relative_dist"] for a, b in zip(a_closest, v_closest) if a["blazar"]["a"] == b["blazar"]["a"]]
 
     if not verbose:
-        return a_closest, v_closest, intersects, top_both
+        return a_closest, v_closest, top_both
     
     print()
     print()

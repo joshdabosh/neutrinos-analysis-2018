@@ -20,7 +20,7 @@ for b in blazars:
     if b['z'] == "0":
         pass
     else:
-        a, v, i, top_both = nbm.main(float(b["ra"]), float(b["de"]), verbose=False)
+        a, v, t = nbm.main(float(b["ra"]), float(b["de"]), verbose=False)
 
         r = v[0]
         if r["n_b_dist"] < 1 and r["blazar"]["a"] == b["a"]:

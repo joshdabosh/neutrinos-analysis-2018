@@ -6,12 +6,12 @@ succ_a, fails_a, succ_v, fails_v, succ_i, fails_i = 0, 0, 0, 0, 0, 0
 
 for suffix in events_listing:
     print("starting work on events_IC{}.txt...".format(suffix))
-    f = open("sample_events/events_IC{}.txt".format(suffix)).readlines()
+    f = open("txs0506_events/events_IC{}.txt".format(suffix)).readlines()
 
     events = [i.split() for i in f][1:]
 
     for ev in events:
-        a, v, i, top_both = nbm.main(ev[1], ev[2], verbose=False)
+        a, v, t = nbm.main(ev[1], ev[2], verbose=False)
 
         # PCCS1217G195.39- is the name for the TXS blazar
 
@@ -38,19 +38,6 @@ for suffix in events_listing:
             fails_v += 1
 
         ####
-            
-        found = False
-
-        #for b in i:
-        if len(i) > 0:
-            if i[0]["blazar"]["a"] == "PCCS1217G195.39-":
-                found = True
-                succ_i += 1
-
-            if not found:
-                fails_i += 1
-        else:
-            fails_i += 1
 
 print()
 
@@ -59,4 +46,3 @@ print("-"*len("RESULTS"))
 
 print("angular: {} successes to {} fails".format(succ_a, fails_a))
 print("vector: {} successes to {} fails".format(succ_v, fails_v))
-print("intersect: {} successes to {} fails".format(succ_i, fails_i))

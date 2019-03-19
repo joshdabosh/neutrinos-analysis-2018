@@ -20,7 +20,7 @@ for suffix in events_listing:
     events = [i.split() for i in f][1:]
 
     for ev in events:
-        a, v, i, t = nbm.main(ev[1], ev[2], verbose=False)
+        a, v, t = nbm.main(ev[1], ev[2], verbose=False)
 
         # PCCS1217G195.39- is the name for the TXS blazar
 
@@ -37,17 +37,6 @@ for suffix in events_listing:
             counts_v[b_name] += 1
         else:
             counts_v[b_name] = 1
-
-        if not len(i) > 0:
-            pass
-
-        else:
-            b_name = i[0]["blazar"]["a"]
-
-            if b_name in counts_i.keys():
-                counts_i[b_name] += 1
-            else:
-                counts_i[b_name] = 1
 
         if not len(t) > 0:
             pass
@@ -87,17 +76,6 @@ print(b_template.format(
     ))
 
 for name, count in reversed(sorted(counts_v.items(), key=operator.itemgetter(1))):
-    print(b_template.format(name=name, count=count))
-
-print()
-
-print("Blazar recorded counts in intersect list:")
-print(b_template.format(
-    name="Blazar name",
-    count="Count"
-    ))
-
-for name, count in reversed(sorted(counts_i.items(), key=operator.itemgetter(1))):
     print(b_template.format(name=name, count=count))
 
 print()
