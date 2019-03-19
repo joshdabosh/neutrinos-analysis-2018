@@ -17,7 +17,7 @@ counts_a, counts_v, counts_i = {}, {}, {}
 
 for suffix in events_listing:
     print("starting work on events_IC{}.txt...".format(suffix))
-    f = open("sample_events/events_IC{}.txt".format(suffix)).readlines()
+    f = open("txs0506_events/events_IC{}.txt".format(suffix)).readlines()
 
     events = [i.split() for i in f][1:]
 
