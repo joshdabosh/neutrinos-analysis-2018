@@ -127,6 +127,7 @@ def main(n_ra, n_de, verbose=True):
     blazarTemplateVec = """
 {name: <20}{ra: <20}{de: <20}{n_b_dist: <30}{e_b_dist: <30}
     """.strip()
+    
     a_closest = angular_comparison(n_ra, n_de)
     v_closest = vectors_comparison(n_ra, n_de)
 
