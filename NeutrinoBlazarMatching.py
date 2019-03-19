@@ -4,62 +4,6 @@ import json
 blazar1 = open("data/blazar2.json").read()
 blazar1 = json.loads(blazar1)
 
-"""
-def angular_comparison2(NtrRA, NtrDE):
-    #NtrRA = input('Enter the Right Ascension of the neutrino event (HH MM SS): ')
-    #NtrDE = float(input('Enter the Declination of the neutrino event (degrees): '))
-
-    #blazar1 = [{"ra":"2 34 45", "de" : -85.456, "a": 'bobitybog', "z" : 0.789},{"ra": "2 45 45", "de" : 83.456, "a": 'bobiasdfog', "z" : 2.21}]
-    #z = velocity/c, velocity = hubbleconstant(roughly 70)*distance
-
-    if NtrDE < 0:
-        n_alpha = abs(float(NtrDE)) + 90
-
-    else:
-        n_alpha = 90 - abs(float(NtrDE))
-
-    n_theta = float(NtrRA)
-
-    n_vector = getCoords(n_alpha, n_theta, 1)
-
-    listBlzInfo = []
-    for blazar in blazar1:
-        b_theta = float(blazar["ra"])
-        b_alpha = float(blazar["de"])
-
-        b_redshift = blazar['z']
-
-        if float(b_redshift) <= 0.25:
-            continue
-                    
-        b_name = blazar["a"]
-
-        b_mag = float(b_redshift) * 2997992.458 / 70
-
-        if b_alpha < 0:
-            b_alpha = abs(b_alpha) + 90
-
-        else:
-            b_alpha = 90 - abs(b_alpha)
-
-        b_vector = getCoords(b_alpha, b_theta, b_mag)
-
-        n_b_distance = getVectorDist(b_vector, n_vector)
-
-        print(n_b_distance)
-        print(b_mag)
-
-        print()
-
-        angle = asin(n_b_distance/b_mag)        
-        listBlzInfo.append({"real_angular_dist" : angle, "blazar":blazar})
-
-    possibles = sorted(listBlzInfo, key=lambda x: x["relative_dist"])
-    #print(*possibles[:10], sep = "\n\n")
-
-    return possibles[:10]
-"""
-
 def RatoLon(x):
     print(x)
     h,m,s = x.split()
@@ -278,3 +222,10 @@ def main(n_ra, n_de, verbose=True):
             n_b_dist=b["n_b_dist"],
             e_b_dist=b["e_b_dist"]
     ))
+
+
+
+
+
+
+

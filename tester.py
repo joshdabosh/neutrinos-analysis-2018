@@ -1,6 +1,12 @@
 import NeutrinoBlazarMatching as nbm
 import json
 
+"""
+Does not work anymore as this was the first results tester, our functions
+have then changed
+"""
+
+
 blazars = json.loads(open("data/blazar2.json").read())
 
 succ = 0
