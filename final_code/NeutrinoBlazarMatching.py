@@ -7,6 +7,9 @@ blazar1 = json.loads(blazar1)
 def RatoLon(x):
     """
     Converts right ascension given in HH:MM:SS to Longitude (degrees).
+    
+    Keyword arguments:
+    x -- the right ascension value (HH:MM:SS)
     """
     
     h,m,s = x.split()
@@ -16,6 +19,10 @@ def getCoords(alpha, theta, r):
     """
     Returns a vector in cartesian coordinates given two angles and the magnitude
     of the vector.
+    
+    Keyword arguments:
+    alpha -- the angle of a vector from the positive y axis (in radians)
+    theta -- the angle of a vector from the negative x axis (in radians)
     """
     
     alpha, theta = alpha*pi/180, theta*pi/180
@@ -28,13 +35,24 @@ def getCoords(alpha, theta, r):
 def calcMagnitude(x, y, z):
     """
     Returns the magnitude of a vector's elements.
+    
+    Can be called with calcMagnitude(*vector) when vector has 3 elements
+    
+    Keyword arguments:
+    x -- the first element in the vector
+    y -- the second element in the vector
+    z -- the third element in the vector
     """
     
     return sqrt(x**2 + y**2 + z**2)
 
 def getVectorDist(b, n):
     """
-    Returns the distance between two vectors.
+    Returns the distance between two vectors by projecting one onto the other.
+    
+    Keyword arguments:
+    b -- the blazar vector
+    n -- the neutrino vector
     """
     
     factor = abs(sum(map(lambda x: x[0]*x[1], zip(b, n))))
@@ -257,10 +275,3 @@ def main(n_ra, n_de, verbose=True):
             n_b_dist=b["n_b_dist"],
             e_b_dist=b["e_b_dist"]
     ))
-
-
-
-
-
-
-
