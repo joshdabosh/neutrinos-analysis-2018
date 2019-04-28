@@ -34,4 +34,4 @@ def getResults():
   else:
     return redirect("https://banjo.joshdabosh.repl.co/",code=200)
 
-app.run(host="0.0.0.0", port=7979)
+app.run(host="0.0.0.0", port=8000)
