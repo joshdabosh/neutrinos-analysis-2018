@@ -1,3 +1,3 @@
 #!/bin/bash
-python3 app.py &
+python3 ./app.py &
 autossh -M 0 -R banjo.serveo.net:80:localhost:8000 serveo.net &

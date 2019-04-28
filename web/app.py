@@ -13,7 +13,7 @@ app.config["CORS_HEADERS"] = "Content-Type"
 
 @app.route("/")
 def index():
-  return "hello"
+  return redirect("https://banjo.joshdabosh.repl.co", code=200)
 
 @app.route("/getResults", methods=["GET", "POST"])
 def getResults():
@@ -27,11 +27,6 @@ def getResults():
     
     ret = json.dumps(v)
 
-    print(ret)
-
     return ret
-
-  else:
-    return redirect("https://banjo.joshdabosh.repl.co/",code=200)
 
 app.run(host="0.0.0.0", port=8000)
