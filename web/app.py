@@ -25,7 +25,7 @@ def getResults():
 
     a, v, t = nbm.main(ra, de, verbose=False)
     
-    ret = json.dumps(v)
+    ret = json.dumps({"a":a, "v":v, "t":t})
 
     return ret
 
