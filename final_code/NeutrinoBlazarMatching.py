@@ -197,23 +197,24 @@ def main(n_ra, n_de, verbose=True):
     blazarTemplateVec = """
 {name: <20}{ra: <20}{de: <20}{n_b_dist: <30}{e_b_dist: <30}
     """.strip()
-    
-    print()
-    print()
 
-    print("Closest according to both lists (intersection of both):")
+    if top_both != []:
+        print()
+        print()
+        
+        print("Closest according to both lists (intersection of both):")
 
-    print("-"*len("Closest according to both lists (intersection of both):"))
+        print("-"*len("Closest according to both lists (intersection of both):"))
 
-    print()
-    print(blazarTemplateTotal.format(
-        name="Blazar Name",
-        ra="Right Ascension",
-        de="Declination",
-        ann_dist="Angular Distance",
-        n_b_dist="Neutrino-Blazar distance",
-        e_b_dist="Earth-Blazar distance"
-    ))
+        print()
+        print(blazarTemplateTotal.format(
+            name="Blazar Name",
+            ra="Right Ascension",
+            de="Declination",
+            ann_dist="Angular Distance",
+            n_b_dist="Neutrino-Blazar distance",
+            e_b_dist="Earth-Blazar distance"
+        ))
 
     for b in intersects:
         print(blazarTemplateTotal.format(
