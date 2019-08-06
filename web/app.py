@@ -13,7 +13,7 @@ app.config["CORS_HEADERS"] = "Content-Type"
 
 @app.route("/")
 def index():
-  return redirect("https://banjo.joshdabosh.repl.co", code=200)
+  return redirect("http://banjo.joshdabosh.repl.co", code=200)
 
 @app.route("/getResults", methods=["GET", "POST"])
 def getResults():
